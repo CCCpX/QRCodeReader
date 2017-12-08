@@ -8,16 +8,45 @@
 
 import UIKit
 import AVFoundation
-import CoreText
 
 //FIX: 该页面从后台切到前台后，扫描的动画会停止!!!
 class QRScannerController: UIViewController {
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var bottomView: UIView!
     
-    var captureSession: AVCaptureSession?
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
-    var qrCodeFrameView: UIView?
+    fileprivate var captureSession: AVCaptureSession?
+    fileprivate var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    fileprivate var qrCodeFrameView: UIView?
+    
+    fileprivate lazy var toolCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 100, height: 80)
+        let toolView = UICollectionView(frame: bottomView.bounds, collectionViewLayout: layout)
+        toolView.register(UINib.init(nibName: "ScanToolItemCell", bundle: nil), forCellWithReuseIdentifier: "ScanToolItemCell")
+        toolView.showsHorizontalScrollIndicator = false
+        toolView.alwaysBounceHorizontal = true
+        toolView.delegate = self
+        toolView.dataSource = self
+        return toolView
+    }()
+    
+    fileprivate var scanResult = [ScanInfo]() {
+        didSet {
+        }
+    }
+    
+    fileprivate var functionItems: [ScanFunction] {
+        return [
+            ScanFunction.flash,
+            ScanFunction.quickScan,
+            ScanFunction.manual,
+            ScanFunction.voice,
+            ScanFunction.barGunInput,
+            ScanFunction.takePhoto,
+            ScanFunction.inputUnsign
+        ]
+    }
     
     // 仅支持条码
     let supportedCodeType = [
@@ -67,6 +96,7 @@ class QRScannerController: UIViewController {
         // 将显示信息的 label 与 top bar 提到最前面
         view.bringSubview(toFront: previewView)
         view.bringSubview(toFront: bottomView)
+        bottomView.addSubview(toolCollectionView)
     }
     
     private func configPreviewLayer() {
@@ -78,7 +108,8 @@ class QRScannerController: UIViewController {
     }
     
     private func configFocusLayer() {
-        let path = UIBezierPath(roundedRect: previewView.bounds, cornerRadius: 0)
+        let fixedRect = UIEdgeInsetsInsetRect(previewView.bounds, UIEdgeInsets(top: -1, left: -1, bottom: 1, right: 1))
+        let path = UIBezierPath(roundedRect: fixedRect, cornerRadius: 0)
         let scanPath = UIBezierPath()
         scanPath.usesEvenOddFillRule = true
         // 绘制扫描区域
@@ -152,6 +183,7 @@ class QRScannerController: UIViewController {
         
         lineLayer.add(scanAnimation, forKey: "YPosition")
         
+        // 绘制提示文字layer
         let textLayer = CATextLayer()
         textLayer.frame = CGRect(x: interval, y: interval + height + 8, width: width, height: 45)
         textLayer.fontSize = 14
@@ -187,3 +219,23 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
         }
     }
 }
+
+extension QRScannerController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return functionItems.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScanToolItemCell", for: indexPath) as! ScanToolItemCell
+        cell.type = functionItems[indexPath.row]
+        return cell
+    }
+}
+
+extension QRScannerController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let type = functionItems[indexPath.row]
+        print("\(type)")
+    }
+}
+

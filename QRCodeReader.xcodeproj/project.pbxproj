@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		094A24851FDA2E9B002CD36B /* ScanToolItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A24841FDA2E9B002CD36B /* ScanToolItemCell.swift */; };
+		094A24871FDA2F07002CD36B /* ScanToolItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A24861FDA2F07002CD36B /* ScanToolItemCell.xib */; };
+		094A248B1FDA413D002CD36B /* ScanInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A248A1FDA413D002CD36B /* ScanInfo.swift */; };
+		094A248D1FDA5A0A002CD36B /* BarGunConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094A248C1FDA5A0A002CD36B /* BarGunConfig.swift */; };
 		F4F09DB71DAF669400026BB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F09DB61DAF669400026BB2 /* AppDelegate.swift */; };
 		F4F09DBC1DAF669400026BB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F09DBA1DAF669400026BB2 /* Main.storyboard */; };
 		F4F09DBE1DAF669400026BB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4F09DBD1DAF669400026BB2 /* Assets.xcassets */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		094A24841FDA2E9B002CD36B /* ScanToolItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanToolItemCell.swift; sourceTree = "<group>"; };
+		094A24861FDA2F07002CD36B /* ScanToolItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanToolItemCell.xib; sourceTree = "<group>"; };
+		094A248A1FDA413D002CD36B /* ScanInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanInfo.swift; sourceTree = "<group>"; };
+		094A248C1FDA5A0A002CD36B /* BarGunConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGunConfig.swift; sourceTree = "<group>"; };
 		F4F09DB31DAF669400026BB2 /* QRCodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4F09DB61DAF669400026BB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4F09DBB1DAF669400026BB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,8 +69,12 @@
 				F4F09DBD1DAF669400026BB2 /* Assets.xcassets */,
 				F4F09DBF1DAF669400026BB2 /* LaunchScreen.storyboard */,
 				F4F09DC21DAF669400026BB2 /* Info.plist */,
+				094A248C1FDA5A0A002CD36B /* BarGunConfig.swift */,
 				F4F09DC81DAF6A3800026BB2 /* QRCodeViewController.swift */,
+				094A248A1FDA413D002CD36B /* ScanInfo.swift */,
 				F4F09DCA1DAF6A4F00026BB2 /* QRScannerController.swift */,
+				094A24841FDA2E9B002CD36B /* ScanToolItemCell.swift */,
+				094A24861FDA2F07002CD36B /* ScanToolItemCell.xib */,
 			);
 			path = QRCodeReader;
 			sourceTree = "<group>";
@@ -130,6 +142,7 @@
 				F4F09DC11DAF669400026BB2 /* LaunchScreen.storyboard in Resources */,
 				F4F09DBE1DAF669400026BB2 /* Assets.xcassets in Resources */,
 				F4F09DBC1DAF669400026BB2 /* Main.storyboard in Resources */,
+				094A24871FDA2F07002CD36B /* ScanToolItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,9 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				094A24851FDA2E9B002CD36B /* ScanToolItemCell.swift in Sources */,
 				F4F09DC91DAF6A3800026BB2 /* QRCodeViewController.swift in Sources */,
 				F4F09DB71DAF669400026BB2 /* AppDelegate.swift in Sources */,
 				F4F09DCB1DAF6A4F00026BB2 /* QRScannerController.swift in Sources */,
+				094A248D1FDA5A0A002CD36B /* BarGunConfig.swift in Sources */,
+				094A248B1FDA413D002CD36B /* ScanInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
