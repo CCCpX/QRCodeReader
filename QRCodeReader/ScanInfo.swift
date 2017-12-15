@@ -2,8 +2,8 @@
 //  ScanInfo.swift
 //  QRCodeReader
 //
-//  Created by chenpeixiang on 08/12/2017.
-//  Copyright © 2017 AppCoda. All rights reserved.
+//  Created by chenpeixiang on 06/12/2017.
+//  Copyright © 2017 chenpeixiang. All rights reserved.
 //
 
 import Foundation

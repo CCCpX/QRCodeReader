@@ -18,12 +18,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="135" height="152"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wv6-qu-aEV">
-                        <rect key="frame" x="0.0" y="0.0" width="135" height="126"/>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wv6-qu-aEV">
+                        <rect key="frame" x="0.0" y="3" width="135" height="122"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldO-G3-0bg">
-                        <rect key="frame" x="49.5" y="134" width="37.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="51" y="133" width="33" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </label>
@@ -32,8 +32,8 @@
             <constraints>
                 <constraint firstItem="ldO-G3-0bg" firstAttribute="top" secondItem="Wv6-qu-aEV" secondAttribute="bottom" constant="8" id="AA7-dz-e5e"/>
                 <constraint firstAttribute="trailing" secondItem="Wv6-qu-aEV" secondAttribute="trailing" id="WpZ-4e-lyV"/>
-                <constraint firstItem="Wv6-qu-aEV" firstAttribute="top" secondItem="rAl-p9-4mw" secondAttribute="top" id="mV0-qJ-hVt"/>
-                <constraint firstAttribute="bottom" secondItem="ldO-G3-0bg" secondAttribute="bottom" id="nh7-Qh-Rw8"/>
+                <constraint firstItem="Wv6-qu-aEV" firstAttribute="top" secondItem="rAl-p9-4mw" secondAttribute="top" constant="3" id="mV0-qJ-hVt"/>
+                <constraint firstAttribute="bottom" secondItem="ldO-G3-0bg" secondAttribute="bottom" constant="3" id="nh7-Qh-Rw8"/>
                 <constraint firstItem="ldO-G3-0bg" firstAttribute="centerX" secondItem="rAl-p9-4mw" secondAttribute="centerX" id="sYw-kr-aRu"/>
                 <constraint firstItem="Wv6-qu-aEV" firstAttribute="leading" secondItem="rAl-p9-4mw" secondAttribute="leading" id="x0P-Cz-VIq"/>
             </constraints>

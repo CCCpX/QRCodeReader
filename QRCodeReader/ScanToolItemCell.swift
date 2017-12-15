@@ -17,25 +17,25 @@ class ScanToolItemCell: UICollectionViewCell {
                 switch type {
                 case .flash:
                     title = "闪光灯"
-                    icon = "flash"
+                    icon = "icon_scan_flash"
                 case .quickScan:
                     title = "极速扫描"
-                    icon = "flash"
+                    icon = "icon_scan_scan"
                 case .manual:
                     title = "手动输入"
-                    icon = "manual"
+                    icon = "icon_scan_flash"
                 case .voice:
                     title = "语音输入"
-                    icon = "flash"
+                    icon = "icon_scan_scan"
                 case .takePhoto:
                     title = "扫完即拍"
-                    icon = "flash"
+                    icon = "icon_scan_voice"
                 case .inputUnsign:
                     title = "导入未签单号"
-                    icon = "flash"
+                    icon = "icon_scan_flash"
                 case .barGunInput:
                     title = "扫描枪输入"
-                    icon = "flash"
+                    icon = "icon_scan_voice"
                 }
             }
             imageView.image = UIImage(named: icon)

@@ -13,6 +13,8 @@ import AVFoundation
 class QRScannerController: UIViewController {
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var leftEdgeBtn: UIButton!
+    @IBOutlet weak var rightEdgeBtn: UIButton!
     
     fileprivate var captureSession: AVCaptureSession?
     fileprivate var videoPreviewLayer: AVCaptureVideoPreviewLayer?
@@ -21,11 +23,12 @@ class QRScannerController: UIViewController {
     fileprivate lazy var toolCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 100, height: 80)
+        layout.itemSize = CGSize(width: 85, height: bottomView.bounds.size.height)
+        layout.minimumLineSpacing = 3
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let toolView = UICollectionView(frame: bottomView.bounds, collectionViewLayout: layout)
         toolView.register(UINib.init(nibName: "ScanToolItemCell", bundle: nil), forCellWithReuseIdentifier: "ScanToolItemCell")
         toolView.showsHorizontalScrollIndicator = false
-        toolView.alwaysBounceHorizontal = true
         toolView.delegate = self
         toolView.dataSource = self
         return toolView
@@ -97,6 +100,8 @@ class QRScannerController: UIViewController {
         view.bringSubview(toFront: previewView)
         view.bringSubview(toFront: bottomView)
         bottomView.addSubview(toolCollectionView)
+        bottomView.bringSubview(toFront: leftEdgeBtn)
+        bottomView.bringSubview(toFront: rightEdgeBtn)
     }
     
     private func configPreviewLayer() {
@@ -108,7 +113,7 @@ class QRScannerController: UIViewController {
     }
     
     private func configFocusLayer() {
-        let fixedRect = UIEdgeInsetsInsetRect(previewView.bounds, UIEdgeInsets(top: -1, left: -1, bottom: 1, right: 1))
+        let fixedRect = UIEdgeInsetsInsetRect(previewView.bounds, UIEdgeInsets(top: -1, left: -1, bottom: -1, right: -1))
         let path = UIBezierPath(roundedRect: fixedRect, cornerRadius: 0)
         let scanPath = UIBezierPath()
         scanPath.usesEvenOddFillRule = true
@@ -195,6 +200,14 @@ class QRScannerController: UIViewController {
         previewView.layer.addSublayer(lineLayer)
         previewView.layer.addSublayer(textLayer)
     }
+
+    @IBAction func toRightAction(_ sender: UIButton) {
+        toolCollectionView.scrollToItem(at: IndexPath(item: 3, section: 0), at: .left, animated: true)
+    }
+    
+    @IBAction func toLeftAction(_ sender: UIButton) {
+        toolCollectionView.scrollToItem(at: IndexPath(item: 3, section: 0), at: .right, animated: true)
+    }
 }
 
 extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
@@ -239,3 +252,10 @@ extension QRScannerController: UICollectionViewDelegate {
     }
 }
 
+extension QRScannerController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.x
+        leftEdgeBtn.isHidden = (offset > 250)
+        rightEdgeBtn.isHidden = (offset < 250)
+    }
+}
